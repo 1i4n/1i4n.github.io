@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://1i4n.github.io/sitemap.xml
